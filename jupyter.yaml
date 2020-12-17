@@ -1,0 +1,10 @@
+version: "3"
+services:
+  notebook:
+    image: jupyter/scipy-notebook
+    container_name: jupyter-notebook
+    restart: always
+    ports:
+      - 8888:8888
+    volumes:
+      - /home/dianhsu/external/data/jupyter:/home/jovyan/external
