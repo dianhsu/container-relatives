@@ -22,10 +22,10 @@ RUN usermod -aG sudo $NB_USER
 WORKDIR /home/$NB_USER
 RUN echo "$NB_USER	ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
-ENV TINI_VERSION v0.19.0
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
-RUN chmod a+x /usr/bin/tini
-ENTRYPOINT ["/usr/bin/tini", "--"]
+# ENV TINI_VERSION v0.19.0
+# ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
+# RUN chmod a+x /usr/bin/tini
+# ENTRYPOINT ["/usr/bin/tini", "--"]
 
 
 USER $NB_USER
