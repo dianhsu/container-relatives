@@ -8,7 +8,7 @@ USER root
 ENV TZ=Asia/Shanghai
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
+# RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 RUN apt-get update && \ 
     apt-get install -y wget curl sudo locales zsh && \
     apt-get install -y vim python3 gcc g++ python3-pip  python-is-python3 && \
