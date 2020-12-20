@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:21.04
 
 ARG NB_USER="dianhsu"
 ARG NB_UID="1000"
