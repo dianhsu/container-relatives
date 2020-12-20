@@ -29,8 +29,8 @@ ENTRYPOINT ["/usr/bin/tini", "--"]
 
 
 USER $NB_USER
-RUN mkdir /home/$NB_USER/.jupyter
+RUN jupyter notebook --generate-config
 RUN echo "c.NotebookApp.password = 'argon2:$argon2id$v=19$m=10240,t=10,p=8$Kb03w1SIOAk2zmIgDXWAYw$fkvATu4iPI8LBBW9rzOjFw'" > /home/$NB_USER/.jupyter/jupyter_notebook_config.py
 RUN echo "c.NotebookApp.ip='*'" >> /home/$NB_USER/.jupyter/jupyter_notebook_config.py
 RUN pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/
-CMD [ "jupyter", "notebook", "--no-browser"]
+CMD [ "jupyter", "notebook"]
