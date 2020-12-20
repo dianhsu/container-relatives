@@ -31,11 +31,4 @@ RUN mkdir /tools
 RUN chown -R ${NB_USER}:${NB_USER} /tools
 
 USER $NB_USER
-# RUN jupyter notebook --generate-config
-# RUN ls /home/${NB_USER}/.jupyter/
-# RUN echo 'c.NotebookApp.password = "argon2:$argon2id$v=19$m=10240,t=10,p=8$Kb03w1SIOAk2zmIgDXWAYw$fkvATu4iPI8LBBW9rzOjFw"' >> /tools/config.py
-# RUN echo "c.NotebookApp.ip='0.0.0.0'" >> /tools/config.py
-# RUN pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/
-# RUN echo "cp /tools/config.py /home/${NB_USER}/.jupyter/jupyter_notebook_config.py && jupyter notebook" > /tools/run.sh
-# RUN chmod +x /tools/run.sh
-CMD ["jupyter", "notebook", "--ip=0.0.0.0"]
+CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--no-browser", "--allow-root"]
