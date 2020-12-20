@@ -31,8 +31,8 @@ RUN echo "$NB_USER	ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 USER $NB_USER
 RUN jupyter notebook --generate-config
 RUN ls /home/${NB_USER}/.jupyter/
-RUN echo 'c.NotebookApp.password = "argon2:$argon2id$v=19$m=10240,t=10,p=8$Kb03w1SIOAk2zmIgDXWAYw$fkvATu4iPI8LBBW9rzOjFw"' >> /home/$NB_USER/.jupyter/jupyter_notebook_config.py
-RUN echo "c.NotebookApp.ip='0.0.0.0'" >> /home/$NB_USER/.jupyter/jupyter_notebook_config.py
-RUN tail /home/$NB_USER/.jupyter/jupyter_notebook_config.py
+RUN echo 'c.NotebookApp.password = "argon2:$argon2id$v=19$m=10240,t=10,p=8$Kb03w1SIOAk2zmIgDXWAYw$fkvATu4iPI8LBBW9rzOjFw"' >> /home/$NB_USER/config.py
+RUN echo "c.NotebookApp.ip='0.0.0.0'" >> /home/$NB_USER/config.py
 RUN pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/
-CMD [ "jupyter", "notebook"]
+RUN echo "cp /home/${NB_USER}/config.py /home/${NB_USER}/.jupyter/jupyter_notebook_config.py && jupyter notebook" > /home/${NB_USER}/run.sh
+CMD [ "bash", "-c", "/home/${NB_USER}/run.sh"]
