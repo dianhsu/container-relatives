@@ -2,7 +2,6 @@ FROM ubuntu
 
 ARG NB_USER="dianhsu"
 ARG NB_UID="1000"
-ARG NB_GID="100"
 
 USER root
 ENV TZ=Asia/Shanghai
@@ -17,8 +16,8 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 RUN pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/
-RUN pip3 install jupyterlab requests numpy pandas pyyaml 
-RUN useradd -ms /bin/bash $NB_USER
+RUN pip3 install jupyterlab requests numpy pandas pyyaml matplotlib
+RUN useradd -ms /bin/bash -u $NB_UID $NB_USER
 RUN usermod -aG sudo $NB_USER
 WORKDIR /home/$NB_USER
 RUN echo "$NB_USER	ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
@@ -32,4 +31,6 @@ RUN mkdir /tools
 RUN chown -R ${NB_USER}:${NB_USER} /tools
 
 USER $NB_USER
+RUN echo "PATH=$PATH:/home/${NB_USER}/.local/bin" >> /home/${NB_USER}/.bashrc
+RUN pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/
 CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--no-browser", "--allow-root"]
