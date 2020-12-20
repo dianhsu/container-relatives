@@ -1,0 +1,3 @@
+[submodule "Dockerfiles/samba"]
+	path = Dockerfiles/samba
+	url = https://github.com/dianhsu/samba
