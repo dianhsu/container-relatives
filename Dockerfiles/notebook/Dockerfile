@@ -5,6 +5,7 @@ ARG NB_UID="1000"
 
 USER root
 ENV TZ=Asia/Shanghai
+ENV SHELL=/bin/bash
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
@@ -19,8 +20,8 @@ RUN pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/
 RUN pip3 install jupyterlab requests numpy pandas pyyaml matplotlib
 RUN useradd -ms /bin/bash -u $NB_UID $NB_USER
 RUN usermod -aG sudo $NB_USER
-WORKDIR /home/$NB_USER
-RUN echo "$NB_USER	ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+    WORKDIR /home/$NB_USER
+    RUN echo "$NB_USER	ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 # ENV TINI_VERSION v0.19.0
 # ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
