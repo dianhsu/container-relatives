@@ -24,7 +24,7 @@ RUN echo "$NB_USER	ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 ENV TINI_VERSION v0.19.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /usr/bin/tini
-RUN chmod +x /usr/bin/tini
+RUN chmod a+x /usr/bin/tini
 ENTRYPOINT ["/usr/bin/tini", "--"]
 
 
