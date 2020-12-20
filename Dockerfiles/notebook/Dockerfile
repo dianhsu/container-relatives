@@ -35,4 +35,5 @@ RUN echo 'c.NotebookApp.password = "argon2:$argon2id$v=19$m=10240,t=10,p=8$Kb03w
 RUN echo "c.NotebookApp.ip='0.0.0.0'" >> /home/$NB_USER/config.py
 RUN pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/
 RUN echo "cp /home/${NB_USER}/config.py /home/${NB_USER}/.jupyter/jupyter_notebook_config.py && jupyter notebook" > /home/${NB_USER}/run.sh
-CMD [ "bash", "-c", "/home/${NB_USER}/run.sh"]
+RUN chmod +x /home/${NB_USER}/run.sh
+CMD [ "bash", "-c", "/home/${whoami}/run.sh"]
