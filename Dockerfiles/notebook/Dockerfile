@@ -11,7 +11,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y wget curl sudo locales iputils-ping && \
+    apt-get install -y wget curl sudo locales iputils-ping zsh && \
     apt-get install -y vim python3 gcc g++ python3-pip  python-is-python3 && \
     apt-get install -y zip unzip git cmake && \
     apt-get clean && \
@@ -34,4 +34,4 @@ RUN chown -R ${NB_USER}:${NB_USER} /tools
 USER $NB_USER
 RUN echo "PATH=$PATH:/home/${NB_USER}/.local/bin" >> /home/${NB_USER}/.bashrc
 RUN pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/
-CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--no-browser", "--allow-root"]
+ENTRYPOINT [ "bash", "-c", "jupyter notebook --ip=0.0.0.0 --no-browser --allow-root"]
