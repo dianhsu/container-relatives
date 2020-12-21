@@ -34,4 +34,4 @@ RUN chown -R ${NB_USER}:${NB_USER} /tools
 USER $NB_USER
 RUN echo "PATH=$PATH:/home/${NB_USER}/.local/bin" >> /home/${NB_USER}/.bashrc
 RUN pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/
-ENTRYPOINT [ "bash", "-c", "jupyter notebook --ip=0.0.0.0 --no-browser --allow-root"]
+ENTRYPOINT [ "bash", "-c", "jupyter notebook --ip=0.0.0.0 --no-browser"]
