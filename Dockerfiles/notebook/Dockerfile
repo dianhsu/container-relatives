@@ -11,7 +11,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y wget curl sudo locales iputils-ping zsh && \
+    apt-get install -y wget curl sudo locales iputils-ping zsh libgl-dev libglib2.0-0 && \
     apt-get install -y vim python3 gcc g++ python3-pip  python-is-python3 && \
     apt-get install -y zip unzip git cmake && \
     apt-get clean && \
