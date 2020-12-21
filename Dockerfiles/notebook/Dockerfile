@@ -10,8 +10,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt-get update && \
     apt-get upgrade -y && \
-    apt-get install -y wget curl sudo locales iputils-ping zsh libgl-dev libglib2.0-0 && \
-    apt-get install -y vim python3 gcc g++ python3-pip  python-is-python3 && \
+    apt-get install -y wget curl sudo locales iputils-ping zsh libgl-dev libglib2.0-0 vim python3 gcc g++ python3-pip  python-is-python3 && \
     apt-get install -y zip unzip git cmake && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
