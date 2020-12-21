@@ -18,7 +18,7 @@ jobs:
       run: docker build . --file Dockerfiles/notebook/Dockerfile --tag registry.cn-hangzhou.aliyuncs.com/dianhsu/notebook:latest
     
     - name: Login Aliyun Docker Hub
-      run: echo "${{ secrets.ALIYUN_DOCKER_HUB_PASS }}" | docker login -u ${{ secrets.ALIYUN_DOCKER_HUB_USER }} --password-stdin
+      run: echo "${{ secrets.ALIYUN_DOCKER_HUB_PASS }}" | docker login -u ${{ secrets.ALIYUN_DOCKER_HUB_USER }} --password-stdin registry.cn-hangzhou.aliyuncs.com
     
     - name: Push to Aliyun Docker Hub
       run: docker push registry.cn-hangzhou.aliyuncs.com/dianhsu/notebook:latest
