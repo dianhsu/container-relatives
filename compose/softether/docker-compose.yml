@@ -1,6 +1,6 @@
 version: "3"
 services: 
-  ref-db:
+  softethervpn:
     image: abyssviper/softethervpn
     container_name: softethervpn
     restart: always
