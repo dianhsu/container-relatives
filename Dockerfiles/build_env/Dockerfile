@@ -7,7 +7,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 
 RUN apt-get update
-RUN apt-get install -y gcc g++ cmake build-essential git curl wget vim zip unzip sudo rsync
+RUN apt-get install -y gcc g++ cmake build-essential git curl wget vim zip unzip sudo rsync mkisofs
 
 RUN apt-get install -y asciidoc binutils bzip2 flex gawk help2man intltool libelf-dev zlib1g-dev make libncurses5-dev libssl-dev patch perl-modules python2-dev gettext xsltproc
 ARG B_USER="dianhsu"
