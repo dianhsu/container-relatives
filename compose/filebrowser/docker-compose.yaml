@@ -1,0 +1,12 @@
+# filebrowser
+version: "3"
+services:
+  file_browser:
+    image: filebrowser/filebrowser
+    volumes:
+      - /cache/files:/srv
+ #     - ~/filebrowser/database:/database
+ #     - ~/filebrowser/.filebrowser.json:/.filebrowser.json
+    ports:
+      - 80:80
+    restart: always

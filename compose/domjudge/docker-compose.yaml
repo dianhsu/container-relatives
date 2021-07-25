@@ -1,0 +1,26 @@
+version: "3"
+services:
+    dom-db:
+        environment:
+            - MYSQL_ROOT_PASSWORD=rootpw
+            - MYSQL_USER=domjudge
+            - MYSQL_PASSWORD=djpw
+            - MYSQL_DATABASE=domjudge
+        ports:
+            - 13306:3306
+        image: mariadb
+    dom-server:
+        environment:
+            - MYSQL_HOST=dom-db
+            - MYSQL_ROOT_PASSWORD=rootpw
+            - MYSQL_USER=domjudge
+            - MYSQL_PASSWORD=djpw
+            - MYSQL_DATABASE=domjudge
+            - CONTAINER_TIMEZONE=Asia/Shanghai
+        ports:
+            - 12345:80
+        depends_on: 
+            - dom-db
+        container_name: domserver
+        image: domjudge/domserver
+    

@@ -1,0 +1,10 @@
+# 网易云音乐解锁工具
+version: '3'
+services:
+  unblockneteasemusic:
+    image: registry.cn-hangzhou.aliyuncs.com/dianhsu/unlock-netease-music
+    environment:
+      NODE_ENV: production
+    ports:
+      - 8080:8080
+    restart: always

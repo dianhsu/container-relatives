@@ -1,0 +1,15 @@
+# samba工具
+version: '3'
+services:
+  smb:
+    image: dperson/samba
+    ports:
+      - "139:139"
+      - "445:445"
+    environment:
+      TZ: 'Asia/Shanghai'
+    restart: always
+    volumes:
+      - /home/dianhsu/external/data/jupyter:/jupyter:z
+      - /home/dianhsu/external/data/aria2:/aria2:z
+    command: '-s "Jupyter;/jupyter;yes;no;no;dianhsu" -s "Aria2;/aria2;yes;no;no;dianhsu" -u "dianhsu;xudian" -p'

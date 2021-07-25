@@ -1,0 +1,10 @@
+version: "3"
+services: 
+  softethervpn:
+    image: abyssviper/softethervpn
+    container_name: softethervpn
+    restart: always
+    ports:
+      - '0.0.0.0:5555:5555'
+      - '0.0.0.0:4500:4500'
+      - '0.0.0.0:500:500'

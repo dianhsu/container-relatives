@@ -1,0 +1,14 @@
+   version: "3"
+   services:
+      dom-judgehost:
+          environment:
+              - DAEMON_ID=0
+              - DOMSERVER_BASEURL=http://dom-server/
+              - CONTAINER_TIMEZON=Asia/Shanghai
+              - JUDGEDAEMON_PASSWORD=asdasdad
+          hostname: judgedaemon-0
+          container_name: judgehost-0
+          image: domjudge/judgehost
+          volumes:
+              - /sys/fs/cgroup:/sys/fs/cgroup:ro
+          privileged: true

@@ -1,0 +1,12 @@
+# jupyter notebook
+version: "3"
+services:
+  notebook:
+    image:  registry.cn-hangzhou.aliyuncs.com/dianhsu/notebook
+    container_name: jupyter-notebook
+    restart: always
+    user: root
+    ports:
+      - 8888:8888
+    volumes:
+      - /home/dianhsu/external/data/jupyter:/home/dianhsu

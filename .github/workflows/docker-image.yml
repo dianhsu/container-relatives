@@ -1,0 +1,21 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build NoteBook image
+      run: docker build . --file Dockerfiles/notebook/Dockerfile --tag dianhsu/notebook:latest
+    
+    - name: Build Dev image
+      run: docker build . --file Dockerfiles/build_dir/Dockerfile --tag dianhsu/build_dev:latest

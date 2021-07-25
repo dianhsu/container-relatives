@@ -1,0 +1,14 @@
+version: "3"
+services: 
+  ref-db:
+    image: postgres:alpine
+    container_name: ref-db
+    restart: always
+    volumes: 
+      - ~/data/ref-db:/var/lib/postgresql/data
+    environment: 
+      - POSTGRES_DB=ref
+      - POSTGRES_USER=username
+      - POSTGRES_PASSWORD=password
+    ports:
+      - '0.0.0.0:5432:5432'
