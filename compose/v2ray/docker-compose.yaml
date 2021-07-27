@@ -7,4 +7,4 @@ services:
         ports: 
             - 7890:7890
         volumes: 
-            - /etc/v2ray/config.json:./config.json
+            - ./config.json:/etc/v2ray/config.json
