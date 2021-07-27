@@ -1,0 +1,8 @@
+version: "3"
+services: 
+    v2ray-server:
+        container_name: v2ray-server
+        image: teddysun/v2ray
+        restart: always
+        volumes: 
+            - /etc/v2ray/config.json:./config.json
