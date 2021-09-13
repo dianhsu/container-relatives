@@ -1,14 +1,14 @@
 version: "3"
 services: 
-  ref-db:
+  postgres:
     image: postgres:alpine
-    container_name: ref-db
+    container_name: postgres
     restart: always
     volumes: 
-      - ~/data/ref-db:/var/lib/postgresql/data
+      - ~/data/postgres:/var/lib/postgresql/data
     environment: 
-      - POSTGRES_DB=ref
-      - POSTGRES_USER=username
-      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=demo
+      - POSTGRES_USER=dianhsu
+      - POSTGRES_PASSWORD=xudian
     ports:
       - '0.0.0.0:5432:5432'
