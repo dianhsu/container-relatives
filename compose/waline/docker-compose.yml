@@ -8,14 +8,29 @@ services:
       - 127.0.0.1:8360:8360
     volumes:
       - ${PWD}/data:/app/data
+    depends_on:
+      - postgres
     environment:
       TZ: 'Asia/Shanghai'
-      SQLITE_PATH: '/app/data'
-      JWT_TOKEN: 'Your token'
       SITE_NAME: 'Your site name'
       SITE_URL: 'https://example.com'
       SECURE_DOMAINS: 'example.com'
       AUTHOR_EMAIL: 'mail@example.com'
-      AVATAR_PROXY: false
-      LOGIN: force
-      
+      AVATAR_PROXY: 'false'
+      LOGIN: 'force'
+      PG_HOST: postgres
+      PG_DB: waline
+      PG_USER: dianhsu
+      PG_PASSWORD: xudian
+  postgres:
+    container_name: postgres
+    image: postgres:latest
+    restart: always
+    volumes:
+      - ${PWD}/data/postgres:/var/lib/postgresql/data
+    environment: 
+      POSTGRES_DB: waline
+      POSTGRES_USER: dianhsu
+      POSTGRES_PASSWORD: xudian
+    ports:
+      - 0.0.0.0:3211:3211
