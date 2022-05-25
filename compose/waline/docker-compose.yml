@@ -33,4 +33,4 @@ services:
       POSTGRES_USER: dianhsu
       POSTGRES_PASSWORD: xudian
     ports:
-      - 0.0.0.0:3211:3211
+      - 0.0.0.0:3211:5432
